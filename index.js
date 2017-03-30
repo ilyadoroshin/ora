@@ -29,6 +29,7 @@ class Ora {
 		this.color = this.options.color;
 		this.interval = this.options.interval || this.spinner.interval || 100;
 		this.stream = this.options.stream;
+		this.indent = this.options.indent || 0;
 		this.id = null;
 		this.frameIndex = 0;
 		this.enabled = typeof this.options.enabled === 'boolean' ? this.options.enabled : ((this.stream && this.stream.isTTY) && !process.env.CI);
@@ -51,7 +52,7 @@ class Ora {
 		}
 
 		this.stream.clearLine();
-		this.stream.cursorTo(0);
+		this.stream.cursorTo(this.indent);
 
 		return this;
 	}
